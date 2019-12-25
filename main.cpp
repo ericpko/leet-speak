@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
-
-using std::string;
+#include "convert_to_leet.h"
 
 
 int main(int argc, char *argv[])
@@ -11,50 +10,31 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  std::cout << "Enter text to be converted into 1337 sp34k:" << std::endl;
+  std::cout << "Welcome to 1337 5p34k where you can translate any sentence.\n";
+  std::cout << "Enter some text or type quit to terminate." << std::endl;
 
   // Read until end-of-file
-  string line;
-  while (getline(std::cin, line)) {
+  std::string line;
+  while (std::getline(std::cin, line)) {
+    // Check if they typed quit
+    if (line == "quit") {
+      std::cout << "Exiting program successfully." << std::endl;
+      break;
+    }
+
     // Check the size of line
     if (line.empty()) {
-      std::cout << "Enter text: ";
+      std::cout << "Nothing entered. Try again or type quit to terminate." << std::endl;
       continue;
     }
 
-    // Loop through all characters in line
-    for (auto &ch : line) {
-      // If it's not alpha, skip it
-      if (!isalpha(ch)) {
-        continue;
-      }
-
-      // Convert text to 1337
-      if (ch == 'l' || ch == 'L') {
-        ch = '1';
-      } else if (ch == 'e' || ch == 'E') {
-        ch = '3';
-      } else if (ch == 'a' || ch == 'A') {
-        ch = '4';
-      } else if (ch == 'o' || ch == 'O') {
-        ch = '0';
-      } else if (ch == 's' || ch == 'S') {
-        ch = '5';
-      }
-    }
-
-    for (int i = 1; i < line.size(); i++) {
-      if (!isalpha(line[i])) {
-        continue;
-      }
-
-      if (!isdigit(line[i-1]) && !isupper(line[i-1]) && !isupper(line[i])) {
-        line[i] = toupper(line[i]);
-      }
-    }
+    convert_to_leet(line);
 
     // Print the new 1337 text
-    std::cout << "1337 5p34k:\n" << line << std::endl;
+    std::cout << "\nTranslation:\n" << line << std::endl;
+
+    // Reprompt message
+    std::cout << "\nConvert new sentence or type quit to terminate." << std::endl;
   }
 
   return 0;
