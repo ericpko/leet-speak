@@ -1,8 +1,6 @@
-#include "convert_to_leet.h"
+#include "include/convert_to_leet.h"
 
-
-void convert_to_leet(std::string & line)
-{
+void convert_to_leet(std::string &line) {
   // Loop through all characters in line
   for (auto &ch : line) {
     // If it's not alpha, skip it
@@ -29,7 +27,8 @@ void convert_to_leet(std::string & line)
       continue;
     }
 
-    if (!std::isdigit(line[i-1]) && !std::isupper(line[i-1]) && !std::isupper(line[i])) {
+    if (!std::isdigit(line[i - 1]) && !std::isupper(line[i - 1]) &&
+        !std::isupper(line[i])) {
       line[i] = std::toupper(line[i]);
     }
   }

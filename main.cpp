@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
-#include "convert_to_leet.h"
 
+#include "include/convert_to_leet.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   if (argc > 1) {
     std::cerr << "Usage: " << argv[0] << std::endl;
     return 1;
@@ -24,7 +23,8 @@ int main(int argc, char *argv[])
 
     // Check the size of line
     if (line.empty()) {
-      std::cout << "Nothing entered. Try again or type quit to terminate." << std::endl;
+      std::cout << "Nothing entered. Try again or type quit to terminate."
+                << std::endl;
       continue;
     }
 
@@ -34,7 +34,8 @@ int main(int argc, char *argv[])
     std::cout << "\nTranslation:\n" << line << std::endl;
 
     // Reprompt message
-    std::cout << "\nConvert new sentence or type quit to terminate." << std::endl;
+    std::cout << "\nConvert new sentence or type quit to terminate."
+              << std::endl;
   }
 
   return 0;
